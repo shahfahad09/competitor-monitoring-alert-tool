@@ -61,7 +61,7 @@ python app.py
 
 
 5. **Access the App:**
-Open your browser and navigate to `https://competitor-monitoring-alert-tool-ecsm.onrender.com/`
+ `https://competitor-monitoring-alert-tool-ecsm.onrender.com/`
 
 ---
 
