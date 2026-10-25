@@ -65,7 +65,7 @@ tr.row{cursor:pointer}tr.row:hover td,tr.ex td{background:var(--glass)}tr.ex ul{
 body.ro .adm{display:none!important}
 @media(max-width:900px){.app{grid-template-columns:1fr}.side{position:static;height:auto;flex-direction:row;align-items:center;padding:10px;overflow-x:auto}.brand{display:none}nav{display:flex;gap:4px;overflow:visible}nav button{white-space:nowrap}.sfoot{display:none}main{padding:18px 14px}.stats{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}.vs{grid-template-columns:1fr}.vsb{justify-self:center}.dual{grid-template-columns:1fr}}
 </style></head><body><div class="bg"></div>
-<div class="app"><aside class="side"><div class="brand"><div class="logo" id="logo"></div><span>Competitor<b>Watch</b></span></div><nav id="nav"></nav>
+<div class="app"><aside class="side"><div class="brand"><span>Competitor<b>Watch</b></span></div><nav id="nav"></nav>
 <div class="sfoot"><button class="pill" id="aipill"><i></i><span></span></button><button class="pill" id="theme"><span>Toggle theme</span></button><div id="auth"></div></div></aside>
 <main><section class="cmd adm"><form id="f"><span class="ci" id="si"></span><input id="dom" placeholder="Scan a competitor, e.g. hubspot.com" required autocomplete="off"><button class="btn" id="go">Scan</button></form><div class="prog" id="prog"></div><div id="msg"></div></section><div id="view"></div></main></div><div id="toasts"></div>
 <script>
@@ -191,6 +191,6 @@ $("#nav").onclick=e=>{const b=e.target.closest("button");if(b){F={q:"",d:"",c:""
 $("#theme").onclick=()=>{const l=document.documentElement.dataset.theme!=="light";document.documentElement.dataset.theme=l?"light":"dark";localStorage.theme=l?"light":"dark"};
 $("#aipill").onclick=()=>ME.admin&&go("settings");
 document.documentElement.dataset.theme=localStorage.theme||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");
-$("#si").innerHTML=ic("search");
+// $("#si").innerHTML=ic("search");
 loadMe().then(()=>go("overview"));
 </script></body></html>
