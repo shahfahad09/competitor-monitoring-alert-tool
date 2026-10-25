@@ -1,28 +1,77 @@
-# Competitor Watch (AI edition)
+```markdown
+# Competitor Watch & Alert Tool
 
-Scan a competitor domain -> own scraper finds blog posts + pricing -> stored in SQLite -> only NEW posts are flagged on later scans -> enriched with AI + search volume -> Slack/email alert.
+A powerful, AI-driven web application built with Flask and Google Gemini API to monitor competitor websites, detect new content publications, track pricing changes, and generate automated executive digests and instant alerts.
 
-## Run locally
-    pip install -r requirements.txt
-    python app.py        # http://localhost:5000
-Locally everyone is admin. Open **Settings** and paste your keys.
+---
 
-## AI features (Claude, set the Anthropic key in Settings)
-1. Smart category for every article  2. Target keyword = the Google query the article aims at (so volume lookups are accurate)
-3. One-line summary per article (also in alerts)  4. **AI strategy brief** on the Compare page (gaps + 5 article ideas + next moves)
-5. **Weekly digest** (generate, send to Slack/email, or auto-weekly when `SCHEDULE_HOURS` is set).
-Without a key the app falls back to the built-in rule-based NLP (`nlp.py`). Scraped text is treated as untrusted data in every prompt.
-Models are configurable via `AI_MODEL_FAST` / `AI_MODEL_SMART`.
+## Features
 
-## Public hosting: what visitors can and cannot do
-Set `ADMIN_PASSWORD`. Then visitors are **read-only**: they can browse articles, categories, keywords, history, Compare (numbers) and read saved AI briefs/digest.
-Only the admin (log in via sidebar) can scan, delete, open Settings (API keys, Slack, email), and generate AI text, so nobody can spend your credits or see your keys. Keys are never sent back to the browser.
+- **Automated Web Scraping:** Crawls competitor homepages and blog/resource listing pages to discover recent posts.
+- **Content & Pricing Change Detection:** Tracks new articles, titles, publication dates, meta descriptions, and pricing adjustments since the last check.
+- **AI-Powered Enrichment:** Leverages the Google Gemini API to automatically categorize articles, generate concise summaries, and estimate target search keywords.
+- **Competitive Intelligence & Comparison:** Provides a side-by-side comparison brief highlighting competitor leads, content gaps, and recommended actions.
+- **Automated Weekly Digest:** Compiles a 7-day executive summary of competitor activities.
+- **Instant Notifications:** Integrates with Slack webhooks and email to send automated alerts.
+- **Secure & Multi-Tenant Settings:** Allows each user to configure their own Gemini API key and Slack webhook securely via a dedicated Settings interface.
 
-## Search volume
-Real volume needs DataForSEO (trial credit) or Keywords Everywhere. Without it a labelled free demand estimate (0-100, Google Autocomplete) is shown.
+---
 
-## Deploy (Render / Railway)
-Build `pip install -r requirements.txt`; start command is in `Procfile` (one worker, job state is in memory). Set `ADMIN_PASSWORD`, and `DB_PATH` on a persistent disk.
+## Tech Stack
 
-## Failure behaviour
-No blog -> "No blog found". Bot-blocked -> "Site blocked us". Bad/missing volume or AI key -> articles still saved with fallback data and the reason is shown. Alert failures are shown; data is never lost.
+- **Backend:** Python, Flask, Requests, BeautifulSoup (Custom Scraper)
+- **AI Integration:** Google Gemini API (`gemini-1.5-flash`)
+- **Database:** SQLite (`monitor.db`)
+- **Frontend:** HTML, CSS, JavaScript (Responsive Dashboard UI)
+
+---
+
+## Installation & Local Setup
+
+1. **Clone the Repository:**
+   ```bash
+   git clone [https://github.com/shahfahad09/competitor-monitoring-alert-tool.git](https://github.com/shahfahad09/competitor-monitoring-alert-tool.git)
+   cd competitor-monitoring-alert-tool
+
+```
+
+2. **Create and Activate Virtual Environment:**
+```bash
+python -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+
+```
+
+
+3. **Install Dependencies:**
+```bash
+pip install -r requirements.txt
+
+```
+
+
+4. **Run the Application:**
+```bash
+python app.py
+
+```
+
+
+5. **Access the App:**
+Open your browser and navigate to `http://127.0.0.1:5000`
+
+---
+
+## Configuration
+
+Navigate to the **Settings** page within the app UI to input and save your:
+
+* **Google Gemini API Key** (Generated via Google AI Studio)
+* **Slack Webhook URL** (For receiving instant alert notifications)
+
+```
+
+```
