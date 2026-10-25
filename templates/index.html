@@ -191,6 +191,6 @@ $("#nav").onclick=e=>{const b=e.target.closest("button");if(b){F={q:"",d:"",c:""
 $("#theme").onclick=()=>{const l=document.documentElement.dataset.theme!=="light";document.documentElement.dataset.theme=l?"light":"dark";localStorage.theme=l?"light":"dark"};
 $("#aipill").onclick=()=>ME.admin&&go("settings");
 document.documentElement.dataset.theme=localStorage.theme||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");
-$("#logo").innerHTML=ic("spark","");$("#si").innerHTML=ic("search");
+$("#si").innerHTML=ic("search");
 loadMe().then(()=>go("overview"));
 </script></body></html>
